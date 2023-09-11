@@ -14,8 +14,8 @@
             //function to generate the computer's choice
         function getComputerChoice () {
             let choices = ['rock', 'paper', 'scissors'];
-            let computerChoice = Math.floor(Math.random() * choices.length); //generates a random number between 0 and 3 (3 exclusive)
-            return choices[computerChoice]; //returns the value ; corresponding to the random number generated, from the array
+            let computerChoice = Math.floor(Math.random() * choices.length);
+            return choices[computerChoice];
         }
         
 
@@ -59,25 +59,23 @@
             //function to decide the winner in 5 rounds
         function game () {
 
-            let computerScore = 0;  //counting the score of the computer
-            let playerScore = 0;    //counting the score of the player
-            let round = 0;          //counting the rounds
+            let computerScore = 0;
+            let playerScore = 0;
+            let round = 0;
             
-            for (let i = 1; i <= 5; i++) { //for loop to play 5 rounds
-                const computerSelection = getComputerChoice(); //getting the choice of the computer
-                let playerSelection = prompt("please choose (rock - paper - scissors): "); //getting the choice of the player
-                playRound (playerSelection, computerSelection);  //function to play the round!
+            while (playerScore < 5 && computerScore < 5) {
+                const computerSelection = getComputerChoice();
+                let playerSelection = prompt("please choose (rock - paper - scissors): ");
+                playRound (playerSelection, computerSelection);
                 if (winner === 'computer') {
                     computerScore +=1;
                 }else if (winner === 'player') {
                     playerScore +=1;
-                }else {
-                    i--; //if it's a draw then we decrement the round counter so we can play 5 rounds
                 }
                 round++;
                 console.log(`Round ${round}`);
                 console.log(`${name}: ${playerSelection} - computer: ${computerSelection}`);
-                console.log(`${name}'s' score: ${playerScore} - computer's score: ${computerScore}`);
+                console.log(`${name}'s score: ${playerScore} - computer's score: ${computerScore}`);
             }
             if (computerScore > playerScore) {
                 alert ('The computer wins!')
